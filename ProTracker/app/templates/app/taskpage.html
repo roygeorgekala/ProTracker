@@ -44,7 +44,7 @@
                   <h3 class="box-title">Tasks To Do</h3>
                </div>
                <div class="box-body">
-                  <ul class="todo-list ui-sortable" ondrop="drop(event)" ondragover="allowDrop(event)">
+                  <ul class="todo-list ui-sortable" ondrop="dropToBeDone(event)" ondragover="allowDrop(event)" id="to-be-done-ul" style="min-height:100px">
                      {% for task in tasks %}
                      <li id="task{{task.id}}" class="draggable" draggable="true" style="cursor: move;" ondragstart="drag(event)">
                         <span class="handle ui-sortable-handle">
@@ -74,9 +74,9 @@
                   <h3 class="box-title">Finished</h3>
                </div>
                <div class="box-body" >
-                  <ul class="todo-list ui-sortable" ondrop="drop(event)" ondragover="allowDrop(event)" id="completed-ul">
+                  <ul class="todo-list ui-sortable" ondrop="drop(event)" ondragover="allowDrop(event)" id="completed-ul" style="min-height:100px">
                      {% for complete in completed %}
-                     <li>
+                     <li id="completed{{complete.id}}" class="draggable" draggable="true" style="cursor:move" ondragstart="drag(event)">
                         <span class="handle ui-sortable-handle">
                         <i class="fa fa-ellipsis-v"></i>                        <i class="fa fa-ellipsis-v"></i>
                         </span>

@@ -22,11 +22,13 @@ function drag(ev) {
 function drop(ev) {
   ev.preventDefault();
   var data = ev.dataTransfer.getData("text");
-  console.log("------------")
-  console.log(data)
-  console.log(ev.target)
-  console.log("------------")
-
   //ev.target.appendChild(document.getElementById(data));
   document.getElementById('completed-ul').appendChild(document.getElementById(data))
+}
+
+function dropToBeDone(ev) {
+  ev.preventDefault();
+  var data = ev.dataTransfer.getData("text");
+  //ev.target.appendChild(document.getElementById(data));
+  document.getElementById('to-be-done-ul').appendChild(document.getElementById(data))
 }
