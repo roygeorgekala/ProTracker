@@ -31,4 +31,20 @@ function dropToBeDone(ev) {
   var data = ev.dataTransfer.getData("text");
   //ev.target.appendChild(document.getElementById(data));
   document.getElementById('to-be-done-ul').appendChild(document.getElementById(data))
+
+  var ajaxRequest = new XMLHttpRequest();
+
+  ajaxRequest.open("GET","testing",true);
+  ajaxRequest.send()
+
+  console.log(ajaxRequest.responseText);
+  console.log(ajaxRequest);
+  data = ajaxRequest.responseText;
+  console.log(data);
+  data = ajaxRequest.response;
+  console.log(data);
+
+
+
+
 }

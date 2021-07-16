@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Task
 # Create your views here.
 from django.http import HttpResponse
@@ -18,3 +18,15 @@ def taskView(request, id):
         'completed': completed,
     }
     return render(request, 'app/taskpage.html', context)
+
+
+def testing(request, id):
+    return HttpResponse("Hello this is a test from " + str(id))
+
+
+def login(request):
+    return render(request,'app/login.html')
+
+
+def redirection(request):
+    return redirect('/login')
