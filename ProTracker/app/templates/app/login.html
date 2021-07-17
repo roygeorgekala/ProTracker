@@ -44,24 +44,25 @@
     <div class="container">
       <div class="forms-container">
         <div class="signin-signup">
-          <form action="#" class="sign-in-form">
-            <img src="C:\Users\hp\Desktop\logo.jpg" class="image" alt="" />
-            <img src="C:\Users\hp\Desktop\Pro.png" class="image" alt="" />
+          <form action="verify" class="sign-in-form" method='POST'>
+          {% csrf_token %}
+            {% comment %} <img src="C:\Users\hp\Desktop\logo.jpg" class="image" alt="" />
+            <img src="C:\Users\hp\Desktop\Pro.png" class="image" alt="" /> {% endcomment %}
             <h2 class="title">Sign in</h2>
 
             <div class="input-field">
               <i class="fas fa-user"></i>
-              <input type="text" placeholder="Username" />
+              <input type="text" placeholder="Username" name="username" required/>
             </div>
             <div class="input-field">
               <i class="fas fa-lock"></i>
-              <input type="password" placeholder="Password" />
+              <input type="password" placeholder="Password"  name="password" required/>
             </div>
-            <!-- <input type="submit" value="Login" class="btn solid" /> -->
-            <a class="btn" href="manger.html">
+            
+            <button type="Submit" class="btn"> 
              LOGIN
-            </a>
-            <p class="social-text">Or Sign in with social platforms</p>
+            </button>
+            {% comment %} <p class="social-text">Or Sign in with social platforms</p>
             <div class="social-media">
               <a href="#" class="social-icon">
                 <i class="fab fa-facebook-f"></i>
@@ -75,13 +76,13 @@
               <a href="#" class="social-icon">
                 <i class="fab fa-linkedin-in"></i>
               </a>
-            </div>
+            </div> {% endcomment %}
           </form>
           <form action="#" class="sign-up-form">
             <h2 class="title">Sign up</h2>
             <div class="input-field">
               <i class="fas fa-user"></i>
-              <input type="text" placeholder="Username" />
+              <input type="text" placeholder="Username" required />
             </div>
             <div class="input-field">
               <i class="fas fa-envelope"></i>
@@ -89,10 +90,10 @@
             </div>
             <div class="input-field">
               <i class="fas fa-lock"></i>
-              <input type="password" placeholder="Password" />
+              <input type="password" placeholder="Password" required />
             </div>
 
-            <p class="social-text">Or Sign up with social platforms</p>
+            {% comment %} <p class="social-text">Or Sign up with social platforms</p>
             <div class="social-media">
               <a href="#" class="social-icon">
                 <i class="fab fa-facebook-f"></i>
@@ -106,7 +107,7 @@
               <a href="#" class="social-icon">
                 <i class="fab fa-linkedin-in"></i>
               </a>
-            </div>
+            </div> {% endcomment %}
           </form>
         </div>
       </div>
