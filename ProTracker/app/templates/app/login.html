@@ -4,11 +4,15 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Login Page</title>
-        <link rel="icon" href="C:\Users\hp\Desktop\logo.jpg" type="image/icon type">
+        <title>Login</title>
+
         <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="{% static 'css/home.css' %}">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="{% static 'css/login.css' %}" />
+        <title>Welcome to ProTracker!</title>
 
     </head>
     <body>
@@ -30,17 +34,6 @@
     </div>
      <link type="text/java" src="{% static 'js/header.js' %}"></link>
 
-
-    </body>
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://kit.fontawesome.com/64d58efce2.js"
-    crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="{% static 'css/login.css' %}" />
-    <title>Welcome to ProTracker!</title>
-  </head>
-  <body>
     <div class="container">
       <div class="forms-container">
         <div class="signin-signup">
@@ -58,7 +51,19 @@
               <i class="fas fa-lock"></i>
               <input type="password" placeholder="Password"  name="password" required/>
             </div>
-            
+               <div class="form-check-inline">
+                <input class="form-check-input" type="radio" name="roleType" id="manager_radio" value="option1" >
+                <label class="form-check-label" for="manager_radio">
+                  Manager 
+                </label>
+              </div>
+              <div class="form-check-inline">
+                <input class="form-check-input" type="radio" name="roleType" id="employee_radio" value="option2" checked>
+                <label class="form-check-label" for="employee_radio">
+                  Employee
+                </label>
+              </div>
+
             <button type="Submit" class="btn"> 
              LOGIN
             </button>
@@ -92,6 +97,7 @@
               <i class="fas fa-lock"></i>
               <input type="password" placeholder="Password" required />
             </div>
+            
 
             {% comment %} <p class="social-text">Or Sign up with social platforms</p>
             <div class="social-media">
