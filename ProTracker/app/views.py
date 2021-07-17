@@ -39,5 +39,4 @@ def verify(request):
         return redirect('/login')
     elif request.method == 'POST':
         print(request.POST.get('username'), request.POST.get('password'))
-
-    return render(request, 'app/testing.html')
+        return render(request, 'app/testing.html')
