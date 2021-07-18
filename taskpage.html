@@ -1,0 +1,107 @@
+{% load static %}
+<head>
+   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+   <link src="https://code.jquery.com/jquery-3.5.1.min.js">
+   </link>
+   <link src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js">
+   </link>
+   <title>ProTracker</title>
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <title>Navbar</title>
+   <meta name="description" content="">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="{% static 'css/home.css' %}">
+</head>
+<body onload="notifyMe()">
+   <header>
+      <a class="logo" href="/"><img width="250px" height="60px" src="{% static 'media/header.png' %}" alt="logo"></a>
+      <a class="cta" href="#">Tasks</a>
+      <a class="cta" href="#">About</a>
+      <a class="cta" href="#">Contact Us</a>
+      <a class="cta" href="logout">Logout</a>
+      <p class="menu cta">Menu</p>
+   </header>
+   <div class="overlay">
+      <a class="close">&times;</a>
+      <div class="overlay__content">
+         <a href="#">Services</a>
+         <a href="#">Projects</a>
+         <a href="#">About</a>
+      </div>
+   </div>
+   <script type="text/javascript" src="{% static 'js/header.js' %}"></script>
+   <script type="text/javascript" src="{% static 'js/taskpage.js' %}"></script>
+
+   </br>
+   </br>
+   <div class="container">
+      <div class="row">
+         <div class="col-md-6">
+            <div class="box box-aqua">
+               <div class="box-header ui-sortable-handle" style="cursor: move;">
+                  <i class="ion ion-clipboard"></i>
+                  <h3 class="box-title">Tasks To Do</h3>
+               </div>
+               <div class="box-body">
+                  <ul class="todo-list ui-sortable" ondrop="dropToBeDone(event)" ondragover="allowDrop(event)" id="to-be-done-ul" style="min-height:100px">
+                     {% for task in tasks %}
+                     <li id="task{{task.id}}" class="draggable" draggable="true" style="cursor: move;" ondragstart="drag(event)">
+                        <span class="handle ui-sortable-handle">
+                        <i class="fa fa-ellipsis-v"></i>
+                        <i class="fa fa-ellipsis-v"></i>
+                        </span>
+                       <!--  <input type="checkbox" value="" name=""> -->
+                        <span class="text">{{task.title}}</span>
+                        <small class="label label-info"><i class="fa fa-clock-o"></i> {{task.date_created}}</small>
+                        <div class="tools">
+<!--                            <i class="fa fa-edit"></i>
+                           <i class="fa fa-trash-o"></i> -->
+                        </div>
+                     </li>
+                     {% endfor %}
+                  </ul>
+               </div>
+               <div class="box-footer clearfix no-border">
+<!--                   <button type="button" class="btn btn-default pull-right"><i class="fa fa-refresh" aria-hidden="true"></i> Refresh</button> -->
+               </div>
+            </div>
+         </div>
+         <div class="col-md-6">
+            <div class="box box-green">
+               <div class="box-header ui-sortable-handle" style="cursor: move;">
+                  <i class="ion ion-clipboard"></i>
+                  <h3 class="box-title">Finished</h3>                  
+                  <button type="button" class="btn btn-default pull-right" style=" font-size: 12px; margin-top: -3px;">
+                     <i class="fa fa-minus"></i> Clear Tasks
+                  </button>
+               </div>
+               <div class="box-body" >
+                  <ul class="todo-list ui-sortable" ondrop="drop(event)" ondragover="allowDrop(event)" id="completed-ul" style="min-height:100px">
+                     {% for complete in completed %}
+                     <li id="task{{complete.id}}" class="draggable" draggable="true" style="cursor:move" ondragstart="drag(event)">
+                        <span class="handle ui-sortable-handle">
+                        <i class="fa fa-ellipsis-v"></i>                        <i class="fa fa-ellipsis-v"></i>
+                        </span>
+                        <!-- <input type="checkbox" value="{{completed.id}}" name=""> -->
+                        <span class="text">{{complete.title}}</span>
+                        <small class="label label-info"><i class="fa fa-clock-o"></i> {{complete.date_created}}</small>
+                        <div class="tools">
+<!--                            <i class="fa fa-edit"></i>
+                           <i class="fa fa-trash-o"></i> -->
+                        </div>
+                     </li>
+                     {% endfor %}
+
+                  </ul>
+               </div>
+               <div class="box-footer clearfix no-border">
+
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</body>
