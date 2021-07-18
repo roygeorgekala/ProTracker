@@ -21,7 +21,7 @@
       <a class="cta" href="#">Tasks</a>
       <a class="cta" href="#">About</a>
       <a class="cta" href="#">Contact Us</a>
-      <a class="cta" href="#">Logout</a>
+      <a class="cta" href="logout">Logout</a>
       <p class="menu cta">Menu</p>
    </header>
    <div class="overlay">
@@ -33,6 +33,8 @@
       </div>
    </div>
    <script type="text/javascript" src="{% static 'js/header.js' %}"></script>
+   <script type="text/javascript" src="{% static 'js/taskpage.js' %}"></script>
+
    </br>
    </br>
    <div class="container">
@@ -76,7 +78,7 @@
                <div class="box-body" >
                   <ul class="todo-list ui-sortable" ondrop="drop(event)" ondragover="allowDrop(event)" id="completed-ul" style="min-height:100px">
                      {% for complete in completed %}
-                     <li id="completed{{complete.id}}" class="draggable" draggable="true" style="cursor:move" ondragstart="drag(event)">
+                     <li id="task{{complete.id}}" class="draggable" draggable="true" style="cursor:move" ondragstart="drag(event)">
                         <span class="handle ui-sortable-handle">
                         <i class="fa fa-ellipsis-v"></i>                        <i class="fa fa-ellipsis-v"></i>
                         </span>

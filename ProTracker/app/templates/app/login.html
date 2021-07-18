@@ -39,8 +39,7 @@
         <div class="signin-signup">
           <form action="verify" class="sign-in-form" method='POST'>
           {% csrf_token %}
-            {% comment %} <img src="C:\Users\hp\Desktop\logo.jpg" class="image" alt="" />
-            <img src="C:\Users\hp\Desktop\Pro.png" class="image" alt="" /> {% endcomment %}
+
             <h2 class="title">Sign in</h2>
 
             <div class="input-field">
@@ -52,13 +51,13 @@
               <input type="password" placeholder="Password"  name="password" required/>
             </div>
                <div class="form-check-inline">
-                <input class="form-check-input" type="radio" name="roleType" id="manager_radio" value="option1" >
+                <input class="form-check-input" type="radio" name="roleType" id="manager_radio" value="manager" >
                 <label class="form-check-label" for="manager_radio">
                   Manager 
                 </label>
               </div>
               <div class="form-check-inline">
-                <input class="form-check-input" type="radio" name="roleType" id="employee_radio" value="option2" checked>
+                <input class="form-check-input" type="radio" name="roleType" id="employee_radio" value="employee" checked>
                 <label class="form-check-label" for="employee_radio">
                   Employee
                 </label>
@@ -67,21 +66,7 @@
             <button type="Submit" class="btn"> 
              LOGIN
             </button>
-            {% comment %} <p class="social-text">Or Sign in with social platforms</p>
-            <div class="social-media">
-              <a href="#" class="social-icon">
-                <i class="fab fa-facebook-f"></i>
-              </a>
-              <a href="#" class="social-icon">
-                <i class="fab fa-twitter"></i>
-              </a>
-              <a href="#" class="social-icon">
-                <i class="fab fa-google"></i>
-              </a>
-              <a href="#" class="social-icon">
-                <i class="fab fa-linkedin-in"></i>
-              </a>
-            </div> {% endcomment %}
+
           </form>
           <form action="#" class="sign-up-form">
             <h2 class="title">Sign up</h2>
@@ -99,21 +84,7 @@
             </div>
             
 
-            {% comment %} <p class="social-text">Or Sign up with social platforms</p>
-            <div class="social-media">
-              <a href="#" class="social-icon">
-                <i class="fab fa-facebook-f"></i>
-              </a>
-              <a href="#" class="social-icon">
-                <i class="fab fa-twitter"></i>
-              </a>
-              <a href="#" class="social-icon">
-                <i class="fab fa-google"></i>
-              </a>
-              <a href="#" class="social-icon">
-                <i class="fab fa-linkedin-in"></i>
-              </a>
-            </div> {% endcomment %}
+            
           </form>
         </div>
       </div>
