@@ -15,7 +15,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <link rel="stylesheet" href="{% static 'css/home.css' %}">
 </head>
-<body>
+<body onload="notifyMe()">
    <header>
       <a class="logo" href="/"><img width="250px" height="60px" src="{% static 'media/header.png' %}" alt="logo"></a>
       <a class="cta" href="#">Tasks</a>
@@ -53,15 +53,19 @@
                         <i class="fa fa-ellipsis-v"></i>
                         <i class="fa fa-ellipsis-v"></i>
                         </span>
-                        <input type="checkbox" value="" name="">
+                       <!--  <input type="checkbox" value="" name=""> -->
                         <span class="text">{{task.title}}</span>
                         <small class="label label-info"><i class="fa fa-clock-o"></i> {{task.date_created}}</small>
+                        <div class="tools">
+<!--                            <i class="fa fa-edit"></i>
+                           <i class="fa fa-trash-o"></i> -->
+                        </div>
                      </li>
                      {% endfor %}
                   </ul>
                </div>
                <div class="box-footer clearfix no-border">
-                  <button type="button" class="btn btn-default pull-right"><i class="fa fa-refresh" aria-hidden="true"></i> Refresh</button>
+<!--                   <button type="button" class="btn btn-default pull-right"><i class="fa fa-refresh" aria-hidden="true"></i> Refresh</button> -->
                </div>
             </div>
          </div>
@@ -69,7 +73,10 @@
             <div class="box box-green">
                <div class="box-header ui-sortable-handle" style="cursor: move;">
                   <i class="ion ion-clipboard"></i>
-                  <h3 class="box-title">Finished</h3>
+                  <h3 class="box-title">Finished</h3>                  
+                  <button type="button" class="btn btn-default pull-right" style=" font-size: 12px; margin-top: -3px;">
+                     <i class="fa fa-minus"></i> Clear Tasks
+                  </button>
                </div>
                <div class="box-body" >
                   <ul class="todo-list ui-sortable" ondrop="drop(event)" ondragover="allowDrop(event)" id="completed-ul" style="min-height:100px">
@@ -78,17 +85,20 @@
                         <span class="handle ui-sortable-handle">
                         <i class="fa fa-ellipsis-v"></i>                        <i class="fa fa-ellipsis-v"></i>
                         </span>
-                        <input type="checkbox" value="{{completed.id}}" name="">
+                        <!-- <input type="checkbox" value="{{completed.id}}" name=""> -->
                         <span class="text">{{complete.title}}</span>
                         <small class="label label-info"><i class="fa fa-clock-o"></i> {{complete.date_created}}</small>
-            
+                        <div class="tools">
+<!--                            <i class="fa fa-edit"></i>
+                           <i class="fa fa-trash-o"></i> -->
+                        </div>
                      </li>
                      {% endfor %}
 
                   </ul>
                </div>
                <div class="box-footer clearfix no-border">
-                  <button type="button" class="btn btn-default pull-right"><i class="fa fa-minus"></i> Clear Tasks</button>
+
                </div>
             </div>
          </div>

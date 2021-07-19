@@ -77,8 +77,10 @@ def refresh(request, username):
     dict_of_tasks = {}
     for task in set_of_tasks:
         taskid = "task"+str(task.id)
-        dict_of_tasks[taskid]=[task.title,task.date_created]
+        dict_of_tasks[taskid] = [task.title,
+                                 task.date_created.strftime("%B %d, %Y, %I:%M %p")]
 
+    # July 19, 2021, 4:32 p.m
     return JsonResponse(dict_of_tasks)
 
 
