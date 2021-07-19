@@ -11,5 +11,7 @@ urlpatterns = [
          views.changeTask, name='changeTask'),
     path('tasks/<str:username>/refresh/', views.refresh, name='refresh'),
     path('tasks/<str:username>/logout', views.logout, name='logout'),
+    path('tasks/<str:username>/del/<str:task_id>',
+         views.deleteTask, name='deleteTask'),
     path('manager/<str:username>', views.manager, name='manager'),
 ]

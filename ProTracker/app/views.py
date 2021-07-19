@@ -2,7 +2,6 @@ from django.shortcuts import render, redirect
 from .models import Task, Employee, Manager
 # Create your views here.
 from django.http import HttpResponse, JsonResponse
-from django.views.decorators.csrf import csrf_protect
 
 
 def login(request):
@@ -69,6 +68,13 @@ def changeTask(request, username, task_id):
     status.completed = not(status.completed)
     status.save()
     return HttpResponse(f'Task number: {task_id[4:]} of User: {username} has been switched')
+
+
+def deleteTask(request, username, task_id):
+
+    task = Task.objects.get(pk=task_id[4:])
+    task.delete()
+    return HttpResponse(f'Task number: {task_id[4:]} of User: {username} has been deleted')
 
 
 def refresh(request, username):

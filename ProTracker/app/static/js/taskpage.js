@@ -4,14 +4,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function refresh() {
 
-  //console.log(ajaxRequest.response);
-  //console.log(ajaxRequest.response.split(" "));
-  //console.log(updated_tasks)
-  //console.log(Object.entries(updated_tasks)[0][0]);
-
-  //console.log(updated_tasks);
-  //console.log(document.getElementById('completed-ul').childNodes);
-
   var ajaxRequest = new XMLHttpRequest();
   ajaxRequest.open("GET", "refresh/", false); //TODO: Change this to true
   ajaxRequest.send();
@@ -23,41 +15,14 @@ function refresh() {
     tasks.push(children[index].id);
   }
 
+
+  var recieved_tasks = [];
   for (let index = 0; index < test.length; index++) {
-
+    recieved_tasks.push(test[index][0]);
     if (!tasks.includes(test[index][0])) {
-      // console.log(test[index][0]);
-      // console.log(test[index][1]);
-      // console.log(test[index][1][0]);
-      // console.log(test[index][1][1]);
 
 
-      if (!window.Notification) {
-        console.log('Browser does not support notifications.');
-      } else {
-        // check if permission is already granted
-        if (Notification.permission === 'granted') {
-          // show notification here
-          var notify = new Notification('New Task Assigned!', {
-            body: test[index][1][0],
-          });
-        } else {
-          // request permission from user
-          Notification.requestPermission().then(function (p) {
-            if (p === 'granted') {
-              // show notification here
-              var notify = new Notification('New Task Assigned!', {
-                body: test[index][1][0],
-              });
-            } else {
-              console.log('User blocked notifications.');
-            }
-          }).catch(function (err) {
-            console.error(err);
-          });
-        }
-      }
-
+      //Creation of the new LI object to be added
       var newLi = document.createElement("li");
       newLi.setAttribute("id", test[index][0]);
       newLi.setAttribute("class", "draggable");
@@ -99,40 +64,60 @@ function refresh() {
 
       document.getElementById('to-be-done-ul').appendChild(newLi);
 
-    }
+      //Following code to run the desktop notifications
+      if (!window.Notification) {
+        console.log('Browser does not support notifications.');
+      } else {
+        // check if permission is already granted
+        if (Notification.permission === 'granted') {
+          // show notification here
+          var notify = new Notification('New Task Assigned!', {
+            body: test[index][1][0],
+          });
+        } else {
+          // request permission from user
+          Notification.requestPermission().then(function (p) {
+            if (p === 'granted') {
+              // show notification here
+              var notify = new Notification('New Task Assigned!', {
+                body: test[index][1][0],
+              });
+            } else {
+              console.log('User blocked notifications.');
+            }
+          }).catch(function (err) {
+            console.error(err);
+          });
+        }
+      }
 
+    }
+  }
+  //console.log(recieved_tasks);
+  for (let index = 0; index < tasks.length; index++) {
+    if (!recieved_tasks.includes(tasks[index])) {
+      console.log(tasks[index]);
+      document.getElementById(tasks[index]).remove();
+    }
 
   }
 }
 
+function clearTasks() {
+  console.log("Clearing tasks");
+  //console.log(document.getElementById("completed-ul").childNodes);
 
-// function notifyMe() {
-//     if (!window.Notification) {
-//         console.log('Browser does not support notifications.');
-//     } else {
-//         // check if permission is already granted
-//         if (Notification.permission === 'granted') {
-//             // show notification here
-//             var notify = new Notification('New Task', {
-//                 body: 'Task1',
-//             });
-//         } else {
-//             // request permission from user
-//             Notification.requestPermission().then(function (p) {
-//                 if (p === 'granted') {
-//                     // show notification here
-//                     var notify = new Notification('New Task', {
-//                         body: 'Task1',
-//                     });
-//                 } else {
-//                     console.log('User blocked notifications.');
-//                 }
-//             }).catch(function (err) {
-//                 console.error(err);
-//             });
-//         }
-//     }
-// }
+  children = document.getElementById("completed-ul").childNodes;
+  for (let index = 0; index < children.length; index++) {
+    if (children[index].nodeName == "LI") {
+      var ajaxRequest = new XMLHttpRequest();
+      console.log(children[index].id);
+      ajaxRequest.open("GET", "del/" + String(children[index].id), true); //TODO: Change this to true
+      ajaxRequest.send();
+      children[index].remove();
+    }
+  }
+}
 
 function allowDrop(ev) {
   ev.preventDefault();

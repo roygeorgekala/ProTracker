@@ -15,7 +15,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <link rel="stylesheet" href="{% static 'css/home.css' %}">
 </head>
-<body onload="notifyMe()">
+<body>
    <header>
       <a class="logo" href="/"><img width="250px" height="60px" src="{% static 'media/header.png' %}" alt="logo"></a>
       <a class="cta" href="#">Tasks</a>
@@ -74,7 +74,7 @@
                <div class="box-header ui-sortable-handle" style="cursor: move;">
                   <i class="ion ion-clipboard"></i>
                   <h3 class="box-title">Finished</h3>                  
-                  <button type="button" class="btn btn-default pull-right" style=" font-size: 12px; margin-top: -3px;">
+                  <button type="button" class="btn btn-default pull-right" style=" font-size: 12px; margin-top: -3px;" onclick="clearTasks()">
                      <i class="fa fa-minus"></i> Clear Tasks
                   </button>
                </div>
