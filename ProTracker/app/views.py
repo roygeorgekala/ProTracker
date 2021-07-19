@@ -77,7 +77,7 @@ def refresh(request, username):
     dict_of_tasks = {}
     for task in set_of_tasks:
         taskid = "task"+str(task.id)
-        dict_of_tasks[taskid]=task.title
+        dict_of_tasks[taskid]=[task.title,task.date_created]
 
     return JsonResponse(dict_of_tasks)
 
