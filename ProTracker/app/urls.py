@@ -14,4 +14,7 @@ urlpatterns = [
     path('tasks/<str:username>/del/<str:task_id>',
          views.deleteTask, name='deleteTask'),
     path('manager/<str:username>', views.manager, name='manager'),
+    path('manager/assigntask/<str:username>',views.assigntask, name='assigntask'),
+        path('manager/activetask/<str:username>', views.activetask, name='activetask'),
+
 ]
