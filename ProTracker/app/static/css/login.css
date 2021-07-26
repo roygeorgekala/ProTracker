@@ -1,3 +1,7 @@
+  body{
+    overflow: hidden;
+  }
+
 * {
     margin: 0;
     padding: 0;
@@ -17,15 +21,26 @@
     overflow: hidden;
   }
 
+.text-left{
+  align-items: left;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 50%;
+  height: 50%;
+  top: 12;
+  left: 12;
+  padding: 155px;
+  align-items: left;
+}
   .forms-container {
-    position: absolute;
+    position: right;
     width: 100%;
     height: 100%;
     top: 0;
     left: 0;
   }
 
-  .signin-signup {
+  .signin-aboutus {
     position: absolute;
     top: 50%;
     transform: translate(-50%, -50%);
@@ -48,11 +63,11 @@
     grid-column: 1 / 2;
     grid-row: 1 / 2;
   }
-
+/* 
   form.sign-up-form {
     opacity: 0;
     z-index: 1;
-  }
+  } */
 
   form.sign-in-form {
     z-index: 2;
@@ -110,7 +125,7 @@
     justify-content: center;
   }
 
-  .social-icon {
+  /* .social-icon {
     height: 46px;
     width: 46px;
     display: flex;
@@ -128,7 +143,7 @@
   .social-icon:hover {
     color: #469981;
     border-color: #469981;
-  }
+  } */
 
   .btn {
     width: 150px;
@@ -142,9 +157,11 @@
     text-align: center;
     text-decoration: none;
     font-weight: 600;
+    font-size: 17px;
     margin: 10px 0;
     cursor: pointer;
     transition: 0.5s;
+    padding-bottom: 30px;
     padding-top: 15px;
   }
 
@@ -192,12 +209,16 @@
   }
 
   .left-panel {
+    align-items: center;
     pointer-events: all;
+    margin-bottom: 206px;
     padding: 3rem 17% 2rem 12%;
   }
 
   .right-panel {
+    align-items: center;
     pointer-events: none;
+    margin-bottom: 206px;
     padding: 3rem 12% 2rem 17%;
   }
 
@@ -220,10 +241,12 @@
 
   .btn.transparent {
     margin: 0;
+    align-items: center;
     background: none;
     border: 2px solid #fff;
     width: 130px;
     height: 41px;
+    font-size: 17px;
     font-weight: 600;
     font-size: 0.8rem;
   }
@@ -235,40 +258,40 @@
 
   /* ANIMATION */
 
-  .container.sign-up-mode:before {
+  .container.about-us-mode:before {
     transform: translate(100%, -50%);
     right: 52%;
   }
 
-  .container.sign-up-mode .left-panel .image,
-  .container.sign-up-mode .left-panel .content {
+  .container.about-us-mode .left-panel .image,
+  .container.about-us-mode .left-panel .content {
     transform: translateX(-800px);
   }
 
-  .container.sign-up-mode .signin-signup {
+  .container.about-us-mode .signin-signup {
     left: 25%;
   }
 
-  .container.sign-up-mode form.sign-up-form {
+  .container.about-us-mode form.sign-up-form {
     opacity: 1;
     z-index: 2;
   }
 
-  .container.sign-up-mode form.sign-in-form {
+  .container.about-us-mode form.sign-in-form {
     opacity: 0;
     z-index: 1;
   }
 
-  .container.sign-up-mode .right-panel .image,
-  .container.sign-up-mode .right-panel .content {
+  .container.about-us-mode .right-panel .image,
+  .container.about-us-mode .right-panel .content {
     transform: translateX(0%);
   }
 
-  .container.sign-up-mode .left-panel {
+  .container.about-us-mode .left-panel {
     pointer-events: none;
   }
 
-  .container.sign-up-mode .right-panel {
+  .container.about-us-mode .right-panel {
     pointer-events: all;
   }
 
@@ -277,15 +300,15 @@
       min-height: 800px;
       height: 100vh;
     }
-    .signin-signup {
+    .signin-aboutus{
       width: 100%;
       top: 95%;
       transform: translate(-50%, -100%);
       transition: 1s 0.8s ease-in-out;
     }
 
-    .signin-signup,
-    .container.sign-up-mode .signin-signup {
+    .signin-aboutus,
+    .container.about-us-mode .signin-aboutus {
       left: 50%;
     }
 
@@ -348,19 +371,19 @@
       transition: 2s ease-in-out;
     }
 
-    .container.sign-up-mode:before {
+    .container.about-us-mode:before {
       transform: translate(-50%, 100%);
       bottom: 32%;
       right: initial;
     }
 
-    .container.sign-up-mode .left-panel .image,
-    .container.sign-up-mode .left-panel .content {
+    .container.about-us-mode .left-panel .image,
+    .container.about-us-mode .left-panel .content {
       transform: translateY(-300px);
     }
 
-    .container.sign-up-mode .right-panel .image,
-    .container.sign-up-mode .right-panel .content {
+    .container.about-us-mode .right-panel .image,
+    .container.about-us-mode .right-panel .content {
       transform: translateY(0px);
     }
 
@@ -369,7 +392,7 @@
       transform: translateY(300px);
     }
 
-    .container.sign-up-mode .signin-signup {
+    .container.about-us-mode .signin-signup {
       top: 5%;
       transform: translate(-50%, 0);
     }
@@ -395,8 +418,94 @@
       left: 50%;
     }
 
-    .container.sign-up-mode:before {
+    .container.about-us-mode:before {
       bottom: 28%;
       left: 50%;
     }
   }
+
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Lato', sans-serif;
+}
+/* html,body{
+  display: grid;
+  height: 100%;
+  place-items: center;
+  background: #0069d9;
+  font-family: 'Lato', sans-serif;
+} */
+.wrapper{
+  display: inline-flex;
+  background: #fff;
+  height: 91px;
+  width: 371px;
+  align-items: center;
+  justify-content: space-evenly;
+  border-radius: 5px;
+  padding: 20px 15px;
+}
+.wrapper .option{
+  background: #fff;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin: 0 10px;
+  border-radius: 30px;
+  cursor: pointer;
+  padding: 0 10px;
+  border: 2px solid lightgrey;
+  transition: all 0.3s ease;
+}
+.wrapper .option .dot{
+  height: 16px;
+  width: 16px;
+  padding: 5px;
+  background: #d9d9d9;
+  border-radius: 50%;
+  position: relative;
+}
+.wrapper .option .dot::before{
+  position: absolute;
+  content: "";
+  top: 3px;
+  left: 3px;
+  padding: 0px;
+  width: 10px;
+  height: 10px;
+  background: #6D9773;
+  border-radius: 50%;
+  opacity: 0;
+  transform: scale(1.5);
+  transition: all 0.3s ease;
+}
+input[type="radio"]{
+  display: none;
+}
+#option-1:checked:checked ~ .option-1,
+#option-2:checked:checked ~ .option-2{
+  border-color: #6D9773;
+  background: #6D9773;
+}
+#option-1:checked:checked ~ .option-1 .dot,
+#option-2:checked:checked ~ .option-2 .dot{
+  background: #fff;
+}
+#option-1:checked:checked ~ .option-1 .dot::before,
+#option-2:checked:checked ~ .option-2 .dot::before{
+  opacity: 1;
+  transform: scale(1);
+}
+.wrapper .option span{
+  font-size: 20px;
+  color: #808080;
+}
+#option-1:checked:checked ~ .option-1 span,
+#option-2:checked:checked ~ .option-2 span{
+  color: #fff;
+}

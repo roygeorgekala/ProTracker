@@ -4,12 +4,12 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Login</title>
+        <title>Welcome to ProTracker!</title>
 
         <meta name="description" content="">
         <link rel="stylesheet" href="{% static 'css/home.css' %}">
 
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="{% static 'css/login.css' %}" />
         <title>Welcome to ProTracker!</title>
@@ -18,25 +18,30 @@
     <body>
       <header>
         <a class="logo" href="/"><img width="250px" height="60px" src="{% static 'media/header.png' %}" alt="logo"></a>
-        <a class="cta" href="#">Tasks</a>
+        <!-- <a class="cta" href="#">Tasks</a>
         <a class="cta" href="#">About</a>
-        <a class="cta" href="#">Contact Us</a>
+        <a class="cta" href="#">Contact Us</a> -->
 
         <p class="menu cta">Menu</p>
     </header>
-    <div class="overlay">
+    <!-- <div class="overlay">
         <a class="close">×</a>
         <div class="overlay__content">
             <a href="#">Services</a>
             <a href="#">Projects</a>
             <a href="#">About</a>
         </div>
-    </div>
+    </div> -->
      <link type="text/java" src="{% static 'js/header.js' %}"></link>
 
     <div class="container">
+      <div class="text-left">
+        <h3>ABOUT US</h3>
+        <p> ProTracker, an organization space for  and assigning tasks. On this website, with the help of predefined templates you can add and check tasks. </p>
+        <p>Easily manage even the most hectic project workflows</p>
+      </div>
       <div class="forms-container">
-        <div class="signin-signup">
+        <div class="signin-aboutus">
           <form action="verify" class="sign-in-form" method='POST'>
           {% csrf_token %}
 
@@ -50,7 +55,7 @@
               <i class="fas fa-lock"></i>
               <input type="password" placeholder="Password"  name="password" required/>
             </div>
-               <div class="form-check-inline">
+               <!-- <div class="form-check-inline">
                 <input class="form-check-input" type="radio" name="roleType" id="manager_radio" value="manager" >
                 <label class="form-check-label" for="manager_radio">
                   Manager 
@@ -61,14 +66,28 @@
                 <label class="form-check-label" for="employee_radio">
                   Employee
                 </label>
-              </div>
+              </div> -->
+
+              <div class="wrapper">
+                <input type="radio" name="select" id="option-1" checked>
+                <input type="radio" name="select" id="option-2">
+                  <label for="option-1" class="option option-1">
+                    <div class="dot"></div>
+                     <span>MANAGER</span>
+                     </label>
+                  <label for="option-2" class="option option-2">
+                    <div class="dot"></div>
+                     <span>EMPLOYEE</span>
+                  </label>
+               </div>
 
             <button type="Submit" class="btn"> 
              LOGIN
             </button>
 
           </form>
-          <form action="#" class="sign-up-form">
+          
+          <!-- <form action="#" class="sign-up-form">
             <h2 class="title">Sign up</h2>
             <div class="input-field">
               <i class="fas fa-user"></i>
@@ -82,10 +101,8 @@
               <i class="fas fa-lock"></i>
               <input type="password" placeholder="Password" required />
             </div>
-            
-
-            
-          </form>
+          </form> -->
+         
         </div>
       </div>
 
@@ -96,8 +113,9 @@
             <p>
              Welcome to ProTracker!
             </p>
-            <button class="btn transparent" id="sign-up-btn">
-              Sign up
+            
+            <button class="btn transparent" id="about-us-btn">
+             ABOUT US
             </button>
           </div>
           <!-- <img src="image/logo.png" class="image" alt="" /> -->
