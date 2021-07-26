@@ -3,6 +3,9 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
+
+
+
     path('', views.redirection, name='redirect'),
     path('login/', views.login, name='login'),
     path('login/verify', views.verify, name='verify'),
