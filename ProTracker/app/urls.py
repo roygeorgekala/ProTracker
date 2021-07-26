@@ -10,11 +10,13 @@ urlpatterns = [
     path('tasks/<str:username>/change/<str:task_id>',
          views.changeTask, name='changeTask'),
     path('tasks/<str:username>/refresh/', views.refresh, name='refresh'),
-    path('tasks/<str:username>/logout', views.logout, name='logout'),
     path('tasks/<str:username>/del/<str:task_id>',
          views.deleteTask, name='deleteTask'),
     path('manager/<str:username>', views.manager, name='manager'),
-    path('manager/assigntask/<str:username>',views.assigntask, name='assigntask'),
-        path('manager/activetask/<str:username>', views.activetask, name='activetask'),
+    path('manager/assigntask/<str:username>/<str:task>',
+         views.assigntask, name='assigntask'),
+    path('manager/<str:username>/activetask',
+         views.activetask, name='activetask'),
+
 
 ]

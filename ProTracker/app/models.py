@@ -10,6 +10,9 @@ class Manager(models.Model):
         max_length=50, primary_key=True)
     password = models.CharField(max_length=50, default='password')
 
+    def __str__(self):
+        return self.name
+
 
 class Employee(models.Model):
     name = models.CharField(max_length=50)

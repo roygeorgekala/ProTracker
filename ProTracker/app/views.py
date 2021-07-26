@@ -9,12 +9,6 @@ def login(request):
     return render(request, 'app/login.html')
 
 
-
-
-def logout(request, username):
-    return redirect('/login')
-
-
 def redirection(request):
     print("hiiiiiiii")
     return redirect('/login')
@@ -34,7 +28,7 @@ def taskView(request, username):
         'tasks': tasks,
         'completed': completed,
     }
-    print("context",context)
+    print("context", context)
     return render(request, 'app/taskpage.html', context)
 
 
@@ -45,7 +39,7 @@ def verify(request):
     elif request.method == 'POST':
         if request.POST.get('roleType') == "employee":
             try:
-                print("request",request.POST.get('username'))
+                print("request", request.POST.get('username'))
                 person = Employee.objects.get(pk=request.POST.get('username'))
             except:
                 return HttpResponse("Wrong username")
@@ -63,42 +57,21 @@ def verify(request):
                 return HttpResponse("Wrong username")
 
             if person.password == request.POST.get('password'):
-                # TODO: change this link to the managerial link
-
                 return redirect('/manager/'+request.POST.get('username'))
 
             else:
                 return HttpResponse("Wrong password")
 
-def assigntask(request,username):
-    print("request",username)
-    username=(list(username.split(",")))
-    # print("request",username)
+
+def assigntask(request, username, task):
+
     if request.method == 'GET':
-        print("im coming",request.POST.get('taskassign'))
-        name=username[0]
-        print("Employe",username[1])
-        Employe=Employee.objects.get(name=username[1])
-        
-        obj=Task()
-        obj.assigned_to=Employe
-        obj.title=username[0]
+        assignee = Employee.objects.get(username=username)
+        obj = Task()
+        obj.assigned_to = assignee
+        obj.title = task
         obj.save()
-        return HttpResponse('task ')
-    #     set_of_tasks = Task.objects.order_by(
-    #     '-id').filter(assigned_to=Employe)
-    #     dict_of_tasks = {}
-    #     for task in set_of_tasks:
-    #         taskid = "task"+str(task.id)
-    #         dict_of_tasks[taskid] = [task.title,
-    #                              task.date_created.strftime("%B %d, %Y, %I:%M %p")]
-
-    # # July 19, 2021, 4:32 p.m
-    #     print("k",dict_of_tasks)
-    #     return JsonResponse(dict_of_tasks)
-
-     
-
+        return HttpResponse(f'task assigned succesfully to {assignee}')
 
 
 def changeTask(request, username, task_id):
@@ -106,18 +79,17 @@ def changeTask(request, username, task_id):
     status = Task.objects.get(pk=task_id[4:])
     status.completed = not(status.completed)
     status.save()
-    return HttpResponse('Task number: {task_id[4:]} of User: {username} has been switched')
+    return HttpResponse(f'Task number: {task_id[4:]} of User: {username} has been switched')
 
 
 def deleteTask(request, username, task_id):
 
     task = Task.objects.get(pk=task_id[4:])
     task.delete()
-    return HttpResponse('Task number: {task_id[4:]} of User: {username} has been deleted')
+    return HttpResponse(f'Task number: {task_id[4:]} of User: {username} has been deleted')
 
 
 def refresh(request, username):
-    print("iiiiiiiiiiiiiiii")
     set_of_tasks = Task.objects.order_by(
         '-id').filter(assigned_to=username)
     dict_of_tasks = {}
@@ -125,67 +97,48 @@ def refresh(request, username):
         taskid = "task"+str(task.id)
         dict_of_tasks[taskid] = [task.title,
                                  task.date_created.strftime("%B %d, %Y, %I:%M %p")]
-
-    # July 19, 2021, 4:32 p.m
-    print("k",dict_of_tasks)
     return JsonResponse(dict_of_tasks)
 
 
 def manager(request, username):
-    employees = Employee.objects.filter()
-    data=[]
-    task=[]
-    # for i in employees:
-    #     set_of_tasks = Task.objects.order_by(
-    #     '-id').filter(assigned_to=i).values('title','assigned_to')
-    #     res = {}
-    #     for sub in set_of_tasks:
-    #         for key, val in sub.items(): 
-    #             res.setdefault(key, []).append(val)
-    #     data.append(i)
-    #     task.append(res)
+    employees = Employee.objects.filter(manager=username)
+    data = []
+    task = []
+
     for i in employees:
         data.append(i)
-        
-    
-    employe={
-        "names":data,
-        "task":task
+
+    employe = {
+        "names": data,
+        "task": task
     }
-    print ("employees",employe)
-
-    # employees = Employee.objects.filter()
-    # print("em",employees)
-    # for i in employees:
-    
-    #     set_of_tasks = [Task.objects.filter(assigned_to=i).values('assigned_to','title')]
-    #     a=json.dumps(list(set_of_tasks))
-    #     print("set_of_tasks",a)
+    return render(request, 'app/manager.html', employe)
 
 
-    # employe={
-    #     "names":set_of_tasks,
-    # #     "task":task
+def activetask(request, username):
+
+    # user = Employee.objects.get(name=username)
+    # set_of_tasks = Task.objects.filter(assigned_to=user.username)
+    # tasks, completed = [], []
+    # for name in set_of_tasks:
+    #     if name.completed:
+    #         completed.append(name)
+    #     else:
+    #         tasks.append(name)
+    # context = {
+    #     'tasks': tasks,
+    #     'completed': completed,
     # }
-    # print("hi",employe)
+    # print("context", context)
+    # return render(request, 'app/manager.html', context)
 
-    return render(request, 'app/manager.html',employe)
+    manager = Manager.objects.get(name=username)
+    members = Employee.objects.filter(manager=username)
+    context = {}
+    for member in members:
+        context[member.username] = []
+        task_list = Task.objects.filter(assigned_to=member.username)
+        for task in task_list:
+            context[member.username] += [[task.title, task.completed]]
 
-
-def activetask(request,username):
-    print("Im in task")
-    user=Employee.objects.get(name=username)
-    set_of_tasks = Task.objects.filter(assigned_to=user.username)
-    tasks, completed = [], []
-    for name in set_of_tasks:
-        if name.completed:
-            completed.append(name)
-        else:
-            tasks.append(name)
-    context = {
-        'tasks': tasks,
-        'completed': completed,
-    }
-    print("context",context)
-    return render(request, 'app/manager.html', context)
-    
+    return JsonResponse(context)

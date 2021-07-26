@@ -16,11 +16,11 @@
  <!-- <script type="text/javascript" src="{% static 'js/manager.js' %}"></script> -->
 
   <title>ProTracker</title>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Navbar</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="{% static 'css/home.css' %}">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Navbar</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{% static 'css/home.css' %}">
 
 </head>
 <body>
@@ -29,7 +29,7 @@
             <a class="cta" href="#">Tasks</a>
             <a class="cta" href="#">About</a>
             <a class="cta" href="#">Contact Us</a>
-            <a class="cta" href="login.html">Logout</a>
+            <a class="cta" href="/login">Logout</a>
             <p class="menu cta">Menu</p>
         </header>
         <div class="overlay">
@@ -51,50 +51,68 @@
  {% for emp in names %}
 <div>
   <ul>
+    
+    <div class="modal fade" id="modal-{{emp.username}}" tabindex="-1" role="dialog" aria-labelledby="TaskModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <h3 class="modal-title mx-auto">All Recent Tasks assigned to {{emp.name}}</h3>
+          <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button> -->
+          <div class="modal-body"  >
+            <div class="row">
+            <div class="col-6">
+              <h5>Assigned Tasks</h5>
+              <div class="todo-list" id="active-tasks-{{emp.username}}">
+              <div class="todo-item">  
+                <span>loading</span>
+              </div>
+            </div>
+            
+
+
+            </div>
+            <div class="col-6">
+              <h5>Completed Tasks</h5>
+              <div class="todo-list" id="completed-tasks-{{emp.username}}">
+              <div class="todo-item">  
+                <span>loading</span>
+              </div>
+            </div>
+            
+
+
+            </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
            
     <div class="container">
-    <div class="row ng-scope">
-       <!--  <div class="col-md-3 col-md-push-9">
-
-
-        </div>
- -->
-                
+    <div class="row ng-scope">                
         <div class="col-md-12 col-md-pull-3">
            
             <section class="search-result-item">
-                <a class="image-link" href="#"><img class="image" src="https://bootdey.com/img/Content/avatar/avatar1.png">
+                <a class="image-link"><img class="image" src="https://bootdey.com/img/Content/avatar/avatar1.png">
                 </a>
                 <div class="search-result-item-body">
                     <div class="row">
                         <div class="col-sm-9">
-                            <h4 class="search-result-item-heading"><li href="#">{{emp.name}}</li></h4>
-                            <p class="info">New York, NY 20188</p>
-                           
+                            <h4 class="search-result-item-heading"><li>{{emp.name}}</li></h4>
+                            <p class="info">Role: Software Engineer</p>
+                            
                         </div>
                         <div class="col-sm-3 text-align-center">
-                          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" onclick="empname('{{emp.name}}')">
+                          <button type="button" class="btn btn-primary" onclick="viewTasks('{{emp.username}}')">View Tasks</button>
+                          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" onclick="empname('{{emp.username}}')">
                 Assign
               </button>
-        
-         <!--  <ul>
-            {% for emp in task %}
-          <div class="todo-list">
-                                <div class="todo-item">
-                                    <div class="checker"><span class=""><input type="checkbox"></span></div>
-                                    <li>{{emp}}</li>
-                                    <a href="javascript:void(0);" class="float-right remove-todo-item"><i class="icon-close"></i></a>
-                                </div>
-                                
-
-                               
-
-                            </div>
-                            {% endfor %}
-        </ul> -->
-            
-
-      
+          
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -113,15 +131,8 @@
           
             {% csrf_token %}
             <input  type="text" id='task' name="taskassign" class="form-control add-task"  placeholder="New Task..." required>
-             <!-- <input  type="text" name="name" class="form-control add-task" placeholder="Employee Name..." required> -->
-      
-        <ul class="nav nav-pills todo-nav">
-            <li role="presentation" class="nav-item all-task active"><a onclick="alltask()" class="nav-link">All</a></li>
-            
-            <li role="presentation" class="nav-item active-task"><a href="#" class="nav-link">Active</a></li>
-             
-            <li role="presentation" class="nav-item completed-task"><a href="#" class="nav-link">Completed</a></li>
-        </ul>
+    </div>
+  </div>
        
        
     
@@ -144,7 +155,7 @@
 
        </div>
   </div>
-                         </section>
+ </section>
 
 </div>
 </div>
@@ -153,40 +164,9 @@
        
    </div>     
     {% endfor %}
-        </ul>
-    <!-- </div>
-    </div> -->
-    
+        </ul>   
         
      <script src="{% static 'js/manager.js' %}"></script>
       </body>
 </html>
-<script type="text/javascript">
-  let name="name"
-  var list=[]
-  function submitTasks(obj){
-    var value=document.getElementById('task').value;
-    var obj=name
-    list.push(value,obj)
-    console.log(list)
-    var data=name
-    var ajaxRequest = new XMLHttpRequest();
 
-  ajaxRequest.open("GET", "assigntask/" + list, true);
-  ajaxRequest.send()
-  }
-  function empname(obj){
-    
-    name=obj
-  
-    
-  }
-  function alltask(){
-     var ajaxRequest = new XMLHttpRequest();
-
-  ajaxRequest.open("GET", "activetask/" + name, true);
-  ajaxRequest.send()
-
-
-  }
-</script>
