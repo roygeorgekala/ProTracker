@@ -1,11 +1,11 @@
 document.addEventListener('DOMContentLoaded', function () {
-  var refresher = setInterval(refresh, 3000);
+  var refresher = setInterval(refresh, 5000);
 })
 
 function refresh() {
 
   var ajaxRequest = new XMLHttpRequest();
-  ajaxRequest.open("GET", "refresh/", false); //TODO: Change this to true
+  ajaxRequest.open("GET", window.location.href + "refresh", false);
   ajaxRequest.send();
   updated_tasks = JSON.parse(ajaxRequest.response);
   test = Object.entries(updated_tasks);
@@ -112,7 +112,7 @@ function clearTasks() {
     if (children[index].nodeName == "LI") {
       var ajaxRequest = new XMLHttpRequest();
       console.log(children[index].id);
-      ajaxRequest.open("GET", "del/" + String(children[index].id), true); //TODO: Change this to true
+      ajaxRequest.open("GET", "del/" + String(children[index].id), true);
       ajaxRequest.send();
       children[index].remove();
     }
