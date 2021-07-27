@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Task, Employee, Manager
+from datetime import datetime
 # Create your views here.
 
 from django.http import HttpResponse, JsonResponse
@@ -10,13 +11,10 @@ def login(request):
 
 
 def redirection(request):
-    print("hiiiiiiii")
     return redirect('/login')
 
 
 def taskView(request, username):
-    print("Im in task")
-
     set_of_tasks = Task.objects.order_by('-id').filter(assigned_to=username)
     tasks, completed = [], []
     for name in set_of_tasks:
@@ -70,12 +68,12 @@ def assigntask(request, username, task):
         obj = Task()
         obj.assigned_to = assignee
         obj.title = task
+        obj.date_created = datetime.now()
         obj.save()
         return HttpResponse(f'task assigned succesfully to {assignee}')
 
 
 def changeTask(request, username, task_id):
-    print("immmmmmmm")
     status = Task.objects.get(pk=task_id[4:])
     status.completed = not(status.completed)
     status.save()
@@ -90,13 +88,15 @@ def deleteTask(request, username, task_id):
 
 
 def refresh(request, username):
-    set_of_tasks = Task.objects.order_by(
-        '-id').filter(assigned_to=username)
+    set_of_tasks = Task.objects.filter(assigned_to=username).order_by(
+        '-id')
     dict_of_tasks = {}
+
     for task in set_of_tasks:
         taskid = "task"+str(task.id)
         dict_of_tasks[taskid] = [task.title,
                                  task.date_created.strftime("%B %d, %Y, %I:%M %p")]
+
     return JsonResponse(dict_of_tasks)
 
 

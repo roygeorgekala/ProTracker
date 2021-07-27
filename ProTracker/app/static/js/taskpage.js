@@ -56,7 +56,10 @@ function refresh() {
       small1.appendChild(icon3);
 
       title = document.createElement("span");
+      title.setAttribute("id", "time");
       title.innerHTML = " " + test[index][1][1];
+
+      console.log(test[index][1][1]);
 
       small1.appendChild(title);
 
@@ -105,16 +108,52 @@ function refresh() {
 
 function clearTasks() {
   console.log("Clearing tasks");
-  //console.log(document.getElementById("completed-ul").childNodes);
+
 
   children = document.getElementById("completed-ul").childNodes;
   for (let index = 0; index < children.length; index++) {
     if (children[index].nodeName == "LI") {
-      var ajaxRequest = new XMLHttpRequest();
-      console.log(children[index].id);
-      ajaxRequest.open("GET", "del/" + String(children[index].id), true);
-      ajaxRequest.send();
-      children[index].remove();
+      var time = children[index].querySelector("#time").innerHTML;
+      var timeArray = time.split(",");
+      var year = parseInt(timeArray[1].substring(1));
+      var month = timeArray[0].split(" ")[1];
+      var date = parseInt(timeArray[0].split(" ")[2]);
+      var hour = parseInt(timeArray[2].split(":")[0].substring(1));
+      var minutes = parseInt(timeArray[2].split(":")[1].substring(0, 2));
+      var spot = timeArray[2].split(" ")[2];
+      let months = {
+        "January": 0,
+        "February": 1,
+        "March": 2,
+        "April": 3,
+        "May": 4,
+        "June": 5,
+        "July": 6,
+        "August": 7,
+        "September": 8,
+        "October": 9,
+        "November": 10,
+        "December": 11,
+      };
+
+      if (spot[0] == 'p') {
+        hour += 12;
+      }
+
+
+      var taskdate = new Date(year, months[month], date, hour, minutes, 0, 0);
+
+
+      console.log(Math.abs(new Date() - taskdate));
+      if ((Math.abs(new Date() - taskdate)) > 100000) {
+
+        var ajaxRequest = new XMLHttpRequest();
+
+        console.log(children[index].id);
+        ajaxRequest.open("GET", "del/" + String(children[index].id), true);
+        ajaxRequest.send();
+        children[index].remove();
+      }
     }
   }
 }
