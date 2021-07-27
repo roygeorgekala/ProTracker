@@ -1,5 +1,5 @@
 # ProTracker
-This repository contains the 6th Semester Project Based Learning undertaking for the subject Web technologies and Applications(WTA 18CS63), ProTracker, a task assignment and managing web app, built using HTML,CSS,JS and a Django backend
+This repository contains the 6th Semester Project Based Learning undertaking for the subject Web technologies and Applications(WTA 18CS63) under VTU 2018 Syllabus, ProTracker, a task assignment and managing web app, built using HTML,CSS,JS and Python, on the Bootstrap and Djano Frameworks.
 
 It is designed to let a manager of a team assign tasks to his/her team members and the members be able to recieve and mark them completed as they carry it out.
 
