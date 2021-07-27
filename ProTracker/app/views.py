@@ -117,21 +117,6 @@ def manager(request, username):
 
 def activetask(request, username):
 
-    # user = Employee.objects.get(name=username)
-    # set_of_tasks = Task.objects.filter(assigned_to=user.username)
-    # tasks, completed = [], []
-    # for name in set_of_tasks:
-    #     if name.completed:
-    #         completed.append(name)
-    #     else:
-    #         tasks.append(name)
-    # context = {
-    #     'tasks': tasks,
-    #     'completed': completed,
-    # }
-    # print("context", context)
-    # return render(request, 'app/manager.html', context)
-
     members = Employee.objects.filter(manager=username)
     context = {}
     for member in members:

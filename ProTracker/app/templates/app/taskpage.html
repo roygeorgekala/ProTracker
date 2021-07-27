@@ -18,20 +18,9 @@
 <body>
    <header>
       <a class="logo" href="/"><img width="250px" height="60px" src="{% static 'media/header.png' %}" alt="logo"></a>
-      <a class="cta" href="#">Tasks</a>
-      <a class="cta" href="#">About</a>
-      <a class="cta" href="#">Contact Us</a>
       <a class="cta" href="/login">Logout</a>
       <p class="menu cta">Menu</p>
    </header>
-   <div class="overlay">
-      <a class="close">&times;</a>
-      <div class="overlay__content">
-         <a href="#">Services</a>
-         <a href="#">Projects</a>
-         <a href="#">About</a>
-      </div>
-   </div>
    <script type="text/javascript" src="{% static 'js/header.js' %}"></script>
    <script type="text/javascript" src="{% static 'js/taskpage.js' %}"></script>
 
@@ -53,19 +42,15 @@
                         <i class="fa fa-ellipsis-v"></i>
                         <i class="fa fa-ellipsis-v"></i>
                         </span>
-                       <!--  <input type="checkbox" value="" name=""> -->
                         <span class="text">{{task.title}}</span>
                         <small class="label label-info"><i class="fa fa-clock-o"> </i> <span  id="time"> {{task.date_created}} </span> </small>
                         <div class="tools">
-<!--                            <i class="fa fa-edit"></i>
-                           <i class="fa fa-trash-o"></i> -->
                         </div>
                      </li>
                      {% endfor %}
                   </ul>
                </div>
                <div class="box-footer clearfix no-border">
-<!--                   <button type="button" class="btn btn-default pull-right"><i class="fa fa-refresh" aria-hidden="true"></i> Refresh</button> -->
                </div>
             </div>
          </div>
@@ -85,12 +70,10 @@
                         <span class="handle ui-sortable-handle">
                         <i class="fa fa-ellipsis-v"></i>                        <i class="fa fa-ellipsis-v"></i>
                         </span>
-                        <!-- <input type="checkbox" value="{{completed.id}}" name=""> -->
+
                         <span class="text">{{complete.title}}</span>
                         <small class="label label-info"><i class="fa fa-clock-o"></i> <span id="time"> {{complete.date_created}}</span></small>
                         <div class="tools">
-<!--                            <i class="fa fa-edit"></i>
-                           <i class="fa fa-trash-o"></i> -->
                         </div>
                      </li>
                      {% endfor %}

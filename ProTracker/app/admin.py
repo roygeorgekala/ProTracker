@@ -5,4 +5,3 @@ from.models import Employee, Task, Manager
 
 admin.site.register(Manager)
 admin.site.register(Employee)
-admin.site.register(Task)
