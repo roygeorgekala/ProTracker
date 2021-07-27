@@ -8,4 +8,4 @@ about_us_btn.addEventListener("click", () => {
 
 sign_in_btn.addEventListener("click", () => {
   container.classList.remove("about-us-mode");
-}); 
+});

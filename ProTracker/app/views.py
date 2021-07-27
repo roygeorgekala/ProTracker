@@ -132,7 +132,6 @@ def activetask(request, username):
     # print("context", context)
     # return render(request, 'app/manager.html', context)
 
-    manager = Manager.objects.get(name=username)
     members = Employee.objects.filter(manager=username)
     context = {}
     for member in members:

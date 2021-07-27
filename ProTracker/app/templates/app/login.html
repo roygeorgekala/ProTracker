@@ -36,9 +36,14 @@
 
     <div class="container">
       <div class="text-left">
-        <h3>ABOUT US</h3>
-        <p> ProTracker, an organization space for  and assigning tasks. On this website, with the help of predefined templates you can add and check tasks. </p>
-        <p>Easily manage even the most hectic project workflows</p>
+        <h2 style="text-align: center;">ProTracker - Task Managment Web App</h2>
+        <br>
+        <p style="text-align: center;"><b>ProTracker</b> gives users the confidence that everybody in their team is organized and accounted for. ProTracker is a web application built using <b>Django, Bootstrap, HTML, CSS and JavaScript</b> that is designed to track the allocation and completion of tasks which are assigned by the managers to their teams. It aims to solve issues arising from miscommunications of tasks during calls and meetings in today's online set-up. </p>
+        <br>
+        <p style="text-align: center;"> Our objective is to provide users with a clear overview of everything on their plate and never lose track of an important task.
+          Protracker surfaces the right tasks at the right times so the users always know what to focus on next.</p>
+        
+
       </div>
       <div class="forms-container">
         <div class="signin-aboutus">
@@ -69,16 +74,18 @@
               </div> -->
 
               <div class="wrapper">
-                <input type="radio" name="select" id="option-1" checked>
-                <input type="radio" name="select" id="option-2">
-                  <label for="option-1" class="option option-1">
-                    <div class="dot"></div>
-                     <span>MANAGER</span>
-                     </label>
-                  <label for="option-2" class="option option-2">
-                    <div class="dot"></div>
-                     <span>EMPLOYEE</span>
+                <input type="radio" name="roleType" id="manager_radio" value="manager" >
+                <input type="radio" name="roleType" id="employee_radio" value="employee" checked>
+
+                <label for="manager_radio" class="option option-1">
+                  <div class="dot"></div>
+                    <span>MANAGER</span>
                   </label>
+
+                <label for="employee_radio" class="option option-2">
+                  <div class="dot"></div>
+                    <span>EMPLOYEE</span>
+                </label>
                </div>
 
             <button type="Submit" class="btn"> 

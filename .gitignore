@@ -1,0 +1,4 @@
+ProTracker\app\__pycache__
+ProTracker\app\migrations
+.idea
+ProTracker\db.sqlite3

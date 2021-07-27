@@ -19,9 +19,6 @@ class Manager(models.Model):
         max_length=50, primary_key=True)
     password = models.CharField(max_length=50, default='password')
 
-    def __str__(self):
-        return self.name
-
 
 class Employee(models.Model):
     name = models.CharField(max_length=50)
@@ -35,9 +32,6 @@ class Employee(models.Model):
     skills = models.CharField(
         max_length=100, default="HTML, CSS, JavaScript, Django")
 
-    def __str__(self):
-        return self.name
-
 
 class Task(models.Model):
     assigned_to = models.ForeignKey(
@@ -46,4 +40,3 @@ class Task(models.Model):
         auto_now_add=True)
     title = models.CharField(max_length=50)
     completed = models.BooleanField(default=False)
-    date_created.editable = True
