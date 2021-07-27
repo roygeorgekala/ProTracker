@@ -1,7 +1,13 @@
 # ProTracker
-This repository contains the 6th Semester Project Based Learning undertaking, ProTracker, a task assignment and managing web app, built using HTML,CSS,JS and a Django backend
+This repository contains the 6th Semester Project Based Learning undertaking for the subject Web technologies and Applications(WTA 18CS63), ProTracker, a task assignment and managing web app, built using HTML,CSS,JS and a Django backend
 
 It is designed to let a manager of a team assign tasks to his/her team members and the members be able to recieve and mark them completed as they carry it out.
+
+
+### Demonstration:
+
+Here we see a employee on his task page, while his manager logs into his portal, and assigns and views the tasks!
+![ezgif com-gif-maker (1)](https://user-images.githubusercontent.com/45360115/127113653-96c4edac-e081-42f6-b3fc-e0e1cb1e54e2.gif)
 
 ### Prerequsites: 
 The required prerequsites are:
@@ -39,4 +45,7 @@ Then click on the add Manager and fill in the details of the first manager. Do s
 
 8. Once done, click on the ***Employees*** tab on the left hand side,![employee](https://user-images.githubusercontent.com/45360115/127109761-59ac1987-1325-4993-899b-e7711a078914.jpg)
  and repeat process for all of the employees in the organization.
-9. And thats it! Now all the users can login and see their tasks flow!
+9. And thats it! Now all the users can login and see their tasks flow! 
+
+
+
