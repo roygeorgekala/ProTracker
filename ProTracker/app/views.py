@@ -24,7 +24,14 @@ def taskView(request, username):
             completed.append(name)
         else:
             tasks.append(name)
+    taskassignlen = len(tasks)
+    taskcompleted = len(completed)
+    if(taskassignlen != 0 or taskcompleted != 0):
+        percentage = (taskcompleted/(taskassignlen+taskcompleted))*100
+    else:
+        percentage = 100
     context = {
+        'progressbar': int(percentage),
         'tasks': tasks,
         'completed': completed,
         'username': user[0],
@@ -92,6 +99,18 @@ def deleteTask(request, username, task_id):
 def refresh(request, username):
     set_of_tasks = Task.objects.filter(assigned_to=username).order_by(
         '-id')
+    tasks, completed = [], []
+    for name in set_of_tasks:
+        if name.completed:
+            completed.append(name)
+        else:
+            tasks.append(name)
+    taskassignlen = len(tasks)
+    taskcompleted = len(completed)
+    if(taskassignlen != 0 or taskcompleted != 0):
+        percentage = (taskcompleted/(taskassignlen+taskcompleted))*100
+    else:
+        percentage = 100
     dict_of_tasks = {}
 
     for task in set_of_tasks:
@@ -99,7 +118,7 @@ def refresh(request, username):
         dict_of_tasks[taskid] = [task.title,
                                  task.date_created.strftime("%B %d, %Y, %I:%M %p")]
 
-    return JsonResponse(dict_of_tasks)
+    return JsonResponse({"taskDict": dict_of_tasks, "progress": int(percentage)})
 
 
 def manager(request, username):

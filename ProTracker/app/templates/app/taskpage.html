@@ -18,7 +18,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <link rel="stylesheet" href="{% static 'css/home.css' %}">
 </head>
-<body>
+<body onload="move('{{progressbar}}')">
    <header>
       <a class="logo" href="/"><img width="250px" height="60px" src="{% static 'media/header.png' %}" alt="logo"></a>
       <a class="cta" href="/login">Logout</a>
@@ -100,4 +100,55 @@
          </div>
       </div>
    </div>
+   <p style="text-align:center;">How much you have completed today</p>
+   <section class="container1" style="width: 62%; margin-left: 19%;">
+  <div class="progress-container" aria-valuemin="0" aria-valuemax="100" >
+    <div id="progress" class="progress"><div id="percent"style="margin: 0 auto;"></div> </div>
+  </div>
+  <br>
+</section>
+
 </body>
+<style>
+  
+*, *:before, *:after { 
+  box-sizing: border-box; 
+		  outline: 0; 
+  -webkit-font-smoothing: antialiased; 
+  text-rendering: optimizeLegibility; 
+}
+::-moz-selection { 
+  background: rgba(204,0,0,.99); 
+  color:#fff; 
+  text-shadow: none; 
+}
+::selection { 
+  background: rgba(204,0,0,.99); 
+  color:#fff; 
+  text-shadow: none; 
+}
+.container1 {
+    display: block;
+    margin: 0;
+    height: 80px;
+    padding: 30px;
+    width: 100%;
+    background: #6D9773;
+}
+.progress-container {
+  margin: 0; 
+  padding: 0;
+  width: 100%;
+  color: #000;
+  background: rgba(0,0,0,.1);
+}
+.progress {
+    margin: 0;
+    padding: 10px 0;
+    color: black;
+    font-weight: bold;
+    background: #fff;
+   
+}
+
+</style>

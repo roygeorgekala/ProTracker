@@ -1,14 +1,59 @@
 document.addEventListener('DOMContentLoaded', function () {
-  var refresher = setInterval(refresh, 5000);
+  setInterval(refresh, 2000);
+  setInterval(function () {
+    if (progress != previous) {
+
+      move(progress);
+    }
+  }, 2000);
 })
 
+
+var progress = 0;
+var previous = 0;
+
+
+function move(obj) {
+
+  var elem = document.getElementById("progress");
+  var percent = document.getElementById("percent");
+  id = setInterval(animater, 20);
+
+  function animater() {
+    if (progress >= previous) {
+      previous++;
+      elem.style.width = previous + '%';
+      percent.innerHTML = previous * 1 + '%';
+    } else {
+      previous--;
+      elem.style.width = previous + '%';
+      percent.innerHTML = previous * 1 + '%';
+    }
+    if (progress == previous) {
+      clearInterval(id)
+    }
+  }
+}
+
+function reset() {
+  widthAnim = 0;
+  elem.style.width = '0%';
+  elem.innerHTML = '0%';
+}
+
 function refresh() {
+
 
   var ajaxRequest = new XMLHttpRequest();
   ajaxRequest.open("GET", window.location.href + "refresh", false);
   ajaxRequest.send();
   updated_tasks = JSON.parse(ajaxRequest.response);
-  test = Object.entries(updated_tasks);
+  test = Object.entries(updated_tasks["taskDict"]);
+  // reset();
+  // move(updated_tasks["progress"]);
+  previous = progress;
+  progress = updated_tasks["progress"];
+  console.log(progress);
   children = document.querySelectorAll('.draggable');
   var tasks = [];
   for (let index = 0; index < children.length; index++) {
@@ -145,7 +190,7 @@ function clearTasks() {
 
 
       console.log(Math.abs(new Date() - taskdate));
-      if ((Math.abs(new Date() - taskdate)) > 43200000) {
+      if ((Math.abs(new Date() - taskdate)) > 43200) { //Change value in milliseconds to set the time after which a task can be deleted
 
         var ajaxRequest = new XMLHttpRequest();
 
@@ -168,6 +213,7 @@ function drag(ev) {
 
 function drop(ev) {
   ev.preventDefault();
+
   var data = ev.dataTransfer.getData("text");
   //console.log(data)
   document.getElementById('completed-ul').appendChild(document.getElementById(data))
