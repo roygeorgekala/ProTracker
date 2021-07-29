@@ -16,6 +16,8 @@ def redirection(request):
 
 def taskView(request, username):
     set_of_tasks = Task.objects.order_by('-id').filter(assigned_to=username)
+    user = Employee.objects.filter(
+        username=username).values_list('name', flat=True)
     tasks, completed = [], []
     for name in set_of_tasks:
         if name.completed:
@@ -25,6 +27,7 @@ def taskView(request, username):
     context = {
         'tasks': tasks,
         'completed': completed,
+        'username': user[0],
     }
     print("context", context)
     return render(request, 'app/taskpage.html', context)
