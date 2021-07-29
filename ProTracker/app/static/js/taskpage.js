@@ -38,7 +38,7 @@ function refresh() {
       span1.appendChild(icon1);
 
       var icon2 = document.createElement("i");
-      icon2.setAttribute("class", "fa fa-ellipsis-v mr-1");
+      icon2.setAttribute("class", "fa fa-ellipsis-v");
       span1.appendChild(icon2);
 
       newLi.appendChild(span1);
@@ -145,7 +145,7 @@ function clearTasks() {
 
 
       console.log(Math.abs(new Date() - taskdate));
-      if ((Math.abs(new Date() - taskdate)) > 100000) {
+      if ((Math.abs(new Date() - taskdate)) > 43200000) {
 
         var ajaxRequest = new XMLHttpRequest();
 

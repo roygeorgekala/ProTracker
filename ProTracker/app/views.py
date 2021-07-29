@@ -29,7 +29,6 @@ def taskView(request, username):
         'completed': completed,
         'username': user[0],
     }
-    print("context", context)
     return render(request, 'app/taskpage.html', context)
 
 
@@ -113,7 +112,8 @@ def manager(request, username):
 
     employe = {
         "names": data,
-        "task": task
+        "task": task,
+        "full_name": Manager.objects.get(username=username).name
     }
     return render(request, 'app/manager.html', employe)
 
