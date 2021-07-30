@@ -1,19 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-  }
+}
 
-  header {
+header {
     display: flex;
     justify-content: flex-end;
     /* align-items: center; */
     padding: 30px 10%;
     background-color: #6D9773;
-  }
+}
 
-  .logo {
+.logo {
     cursor: pointer;
     float: left;
     display: block;
@@ -21,38 +22,38 @@
     width: 250px;
     height: 50px;
     height: 70px;
-    }
+}
 
 
 
-  .nav__links a,
-  .cta,
-  .overlay__content a {
+.nav__links a,
+.cta,
+.overlay__content a {
     font-family: "Roboto", sans-serif;
     font-weight: 500;
     color: #edf0f1;
     text-decoration: none;
-  }
+}
 
-  .nav__links {
+.nav__links {
     list-style: none;
     display: flex;
-  }
+}
 
-  .nav__links li {
+.nav__links li {
     display: inline-block;
     padding: 0px 20px;
-  }
+}
 
-  .nav__links li a {
+.nav__links li a {
     transition: color 0.3s ease 0s;
-  }
+}
 
-  .nav__links li a:hover {
+.nav__links li a:hover {
     color: #0C3B2E;
-  }
+}
 
-  .cta {
+.cta {
     padding: 9px 25px;
     margin-left: 30px;
     background-color: #6D9773(0, 136, 169, 1);
@@ -60,19 +61,19 @@
     border-radius: 50px;
     cursor: pointer;
     transition: background-color 0.3s ease 0s;
-  }
+}
 
-  .cta:hover {
+.cta:hover {
     background-color: #0C3B2E;
-  }
+}
 
-  /* Mobile Nav */
+/* Mobile Nav */
 
-  .menu {
+.menu {
     display: none;
-  }
+}
 
-  .overlay {
+.overlay {
     height: 100%;
     width: 0;
     position: fixed;
@@ -82,51 +83,54 @@
     background-color: #24252a;
     overflow-x: hidden;
     transition: width 0.5s ease 0s;
-  }
+}
 
-  .overlay--active {
+.overlay--active {
     width: 100%;
-  }
+}
 
-  .overlay__content {
+.overlay__content {
     display: flex;
     height: 100%;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-  }
+}
 
-  .overlay a {
+.overlay a {
     padding: 15px;
     font-size: 36px;
     display: block;
     transition: color 0.3s ease 0s;
-  }
+}
 
-  .overlay a:hover,
-  .overlay a:focus {
+.overlay a:hover,
+.overlay a:focus {
     color: #0088a9;
-  }
-  .overlay .close {
+}
+
+.overlay .close {
     position: absolute;
     top: 20px;
     right: 45px;
     font-size: 60px;
     color: #edf0f1;
-  }
+}
 
-  @media screen and (max-height: 450px) {
+@media screen and (max-height: 450px) {
     .overlay a {
-      font-size: 20px;
+        font-size: 20px;
     }
+
     .overlay .close {
-      font-size: 40px;
-      top: 15px;
-      right: 35px;
+        font-size: 40px;
+        top: 15px;
+        right: 35px;
     }
-  }
-body{
-    margin-top:20px;
+}
+
+body {
+    margin-top: 20px;
     background: #f8f8f8;
 }
 
@@ -197,21 +201,38 @@ div.checker span {
     background-position: 0 -260px;
 }
 
-div.checker, div.checker input, div.checker span {
+div.checker,
+div.checker input,
+div.checker span {
     width: 19px;
     height: 19px;
 }
 
-div.checker, div.radio, div.uploader {
+div.checker,
+div.radio,
+div.uploader {
     position: relative;
 }
 
-div.button, div.button *, div.checker, div.checker *, div.radio, div.radio *, div.selector, div.selector *, div.uploader, div.uploader * {
+div.button,
+div.button *,
+div.checker,
+div.checker *,
+div.radio,
+div.radio *,
+div.selector,
+div.selector *,
+div.uploader,
+div.uploader * {
     margin: 0;
     padding: 0;
 }
 
-div.button, div.checker, div.radio, div.selector, div.uploader {
+div.button,
+div.checker,
+div.radio,
+div.selector,
+div.uploader {
     display: -moz-inline-box;
     display: inline-block;
     zoom: 1;
@@ -224,11 +245,12 @@ div.button, div.checker, div.radio, div.selector, div.uploader {
     border: initial;
     background: #fff;
     border-radius: calc(.15rem - 1px);
-    box-shadow: 0 1px 15px rgba(0,0,0,0.04), 0 1px 6px rgba(0,0,0,0.04);
+    box-shadow: 0 1px 15px rgba(0, 0, 0, 0.04), 0 1px 6px rgba(0, 0, 0, 0.04);
 }
 
-body{margin-top:20px;
-background-color: #eee;
+body {
+    margin-top: 20px;
+    background-color: #eee;
 }
 
 .search-result-categories>li>a {
@@ -316,11 +338,11 @@ background-color: #eee;
 }
 
 .search-result-item-heading {
-    font-weight: 400
+    font-weight: 400;
 }
 
 .search-result-item-heading>a {
-    color: #555
+    color: #555,
 }
 
 @media (min-width:768px) {
@@ -329,6 +351,6 @@ background-color: #eee;
     }
 }
 
-.container{
-  padding-left: 20%;
+.container {
+    padding-left: 20%;
 }
